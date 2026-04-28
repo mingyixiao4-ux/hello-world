@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="manifest" href="manifest.json" />
+  <title>天气与心情记录</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header>
+      <h1>天气与心情记录</h1>
+      <p>存在即价值，体验即馈赠</p>
+    </header>
+
+    <section class="card input-card">
+      <form id="entryForm">
+        <div class="field-row">
+          <label for="date">日期</label>
+          <input type="date" id="date" name="date" required />
+        </div>
+
+        <div class="field-row">
+          <label for="weather">天气</label>
+          <fieldset id="weather" class="weather-fieldset">
+            <label><input type="checkbox" value="晴"> ☀️ 晴</label>
+            <label><input type="checkbox" value="多云"> ⛅ 多云</label>
+            <label><input type="checkbox" value="阴"> ☁️ 阴</label>
+            <label><input type="checkbox" value="小雨"> 🌧️ 小雨</label>
+            <label><input type="checkbox" value="中雨"> 🌧️ 中雨</label>
+            <label><input type="checkbox" value="大雨"> ⛈️ 大雨</label>
+            <label><input type="checkbox" value="雪"> ❄️ 雪</label>
+            <label><input type="checkbox" value="大风"> 🌬️ 大风</label>
+            <label><input type="checkbox" value="其他"> 🌈 其他</label>
+          </fieldset>
+        </div>
+
+        <div class="field-row">
+          <label for="mood">心情</label>
+          <select id="mood" name="mood" required>
+            <option value="">请选择</option>
+            <option value="非常好">😄 非常好</option>
+            <option value="比较好">🙂 比较好</option>
+            <option value="一般">😐 一般</option>
+            <option value="有点烦">😕 有点烦</option>
+            <option value="很低落">😢 很低落</option>
+          </select>
+        </div>
+
+        <div class="field-row textarea-row">
+          <label for="note">备注</label>
+          <textarea id="note" name="note" rows="4" placeholder="写下当天的想法或特别情况..."></textarea>
+        </div>
+
+        <button type="submit" class="btn-primary">保存记录</button>
+      </form>
+    </section>
+
+    <section class="card calendar-card">
+      <div class="list-header">
+        <h2>日历视图</h2>
+        <div class="calendar-nav">
+          <button id="prevMonth" class="btn-secondary">上月</button>
+          <span id="calendarMonth" class="calendar-month"></span>
+          <button id="nextMonth" class="btn-secondary">下月</button>
+        </div>
+      </div>
+      <div class="calendar-grid" id="calendarGrid"></div>
+      <div id="calendarDetail" class="calendar-detail hidden">
+        <h3>当天详情</h3>
+        <div id="calendarDetailContent" class="calendar-detail-content">点击日期查看当天的天气与心情。</div>
+      </div>
+    </section>
+
+    <section class="card list-card">
+      <div class="list-header">
+        <h2>历史记录</h2>
+        <button id="clearAll" class="btn-secondary">清空所有</button>
+      </div>
+      <div id="entries"></div>
+      <p id="emptyState" class="empty-state">还没有记录，先添加一条吧！</p>
+    </section>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
